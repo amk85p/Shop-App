@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import productsData from '../../data/products';
-import Product from '../Product/Product';
+import Product from './Product/Product';
 
 const Products = () => {
-  const [products]  = useState(productsData);
+  const [products] = useState(productsData);
 
   return (
     <section>
       <ul>
-      {/* <Product
+        {/* <Product
         id={products[0].id}
         name={products[0].name}
         title={products[0].title}
@@ -22,9 +22,10 @@ const Products = () => {
         colors={products[1].colors}
         sizes={products[1].sizes}
         basePrice={products[1].basePrice} /> */}
-    {products.map(product => (<Product key={product.id} {... product }/>))}
-    </ul>
-    
+        {products.map((product) => (
+          <Product key={product.id} {...product} />
+        ))}
+      </ul>
     </section>
   );
 };

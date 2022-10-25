@@ -1,8 +1,8 @@
 import styles from './Product.module.scss';
 
-import { useState } from 'react';
-import ProductImage from '../ProductImage/ProductImage';
-import ProductForm from '../ProductForm/ProductForm';
+import { useMemo, useState } from 'react';
+import ProductImage from './ProductImage/ProductImage';
+import ProductForm from './ProductForm/ProductForm'
 import PropTypes from 'prop-types';
 
 const Product = (props) => {
@@ -15,6 +15,7 @@ const Product = (props) => {
   const color = props.colors[colorShirt];
 
   const getPrice = () => props.basePrice + addPrice;
+  console.log('getPrice', props.basePrice, addPrice);
 
   const handleSubmit = (e) => (
     e.preventDefault(),
