@@ -9,7 +9,7 @@ const OptionSize = (props) => {
           <button
             type='button'
             onClick={() => (props.setSize(item), console.log(size, item))}
-            className={item === props.sizeShirt && styles.active}
+            className={item === props.sizeShirt ? styles.active : undefined}
           >
             {' '}
             {size.name}{' '}
