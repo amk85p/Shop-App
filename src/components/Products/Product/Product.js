@@ -2,7 +2,7 @@ import styles from './Product.module.scss';
 
 import { useMemo, useState } from 'react';
 import ProductImage from './ProductImage/ProductImage';
-import ProductForm from './ProductForm/ProductForm'
+import ProductForm from './ProductForm/ProductForm';
 import PropTypes from 'prop-types';
 
 const Product = (props) => {
@@ -14,8 +14,13 @@ const Product = (props) => {
   const size = props.sizes[sizeShirt].name;
   const color = props.colors[colorShirt];
 
-  const getPrice = () => props.basePrice + addPrice;
-  console.log('getPrice', props.basePrice, addPrice);
+  const getPriceAmount = props.basePrice + addPrice;
+  // const getPrice = () => props.basePrice + addPrice;
+  // console.log('getPrice', props.basePrice, addPrice);
+
+  const getPrice = useMemo(() => {
+    return getPriceAmount;
+  }, [getPriceAmount]);
 
   const handleSubmit = (e) => (
     e.preventDefault(),
@@ -23,7 +28,7 @@ const Product = (props) => {
       'Product:',
       props.title,
       ', price',
-      getPrice(),
+      getPrice,
       ', size',
       size,
       ', color',
@@ -43,7 +48,7 @@ const Product = (props) => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {getPrice()} $</span>
+          <span className={styles.price}>Price: {getPrice} $</span>
         </header>
         <ProductForm
           sizes={props.sizes}
