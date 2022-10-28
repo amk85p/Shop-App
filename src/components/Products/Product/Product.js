@@ -9,18 +9,18 @@ const Product = (props) => {
   const [sizeShirt, setSize] = useState(0);
   const [colorShirt, setColor] = useState(0);
 
-  const addPrice = props.sizes[sizeShirt].additionalPrice;
+  // const addPrice = props.sizes[sizeShirt].additionalPrice;
 
   const size = props.sizes[sizeShirt].name;
   const color = props.colors[colorShirt];
 
-  const getPriceAmount = props.basePrice + addPrice;
+  // const getPriceAmount = props.basePrice + addPrice;
   // const getPrice = () => props.basePrice + addPrice;
   // console.log('getPrice', props.basePrice, addPrice);
 
   const getPrice = useMemo(() => {
-    return getPriceAmount;
-  }, [getPriceAmount]);
+    return props.basePrice + props.sizes[sizeShirt].additionalPrice;
+  }, [sizeShirt]);
 
   const handleSubmit = (e) => (
     e.preventDefault(),
