@@ -14,13 +14,11 @@ const Product = (props) => {
   const size = props.sizes[sizeShirt].name;
   const color = props.colors[colorShirt];
 
-  // const getPriceAmount = props.basePrice + addPrice;
   // const getPrice = () => props.basePrice + addPrice;
-  // console.log('getPrice', props.basePrice, addPrice);
 
   const getPrice = useMemo(() => {
     return props.basePrice + props.sizes[sizeShirt].additionalPrice;
-  }, [sizeShirt]);
+  }, [sizeShirt, props.basePrice, props.sizes]);
 
   const handleSubmit = (e) => (
     e.preventDefault(),
